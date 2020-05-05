@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import ReactDOM from "react-dom";
 import { App } from "./components/App";
 import { Provider } from "react-redux";
@@ -9,7 +9,7 @@ import store from "./store";
 
 const history = createBrowserHistory();
 
-const Root = () => {
+const Root: FC = () => {
   return (
     <Provider store={store}>
       <Router history={history}>
