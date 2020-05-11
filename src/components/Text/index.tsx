@@ -1,15 +1,8 @@
-import React, { FC } from "react";
-import styled, { TextThemeTypes } from "styled-components";
+import styled from "styled-components";
 
-interface TextProps {
-  theme?: TextThemeTypes;
-}
-
-const StyledText = styled.p`
-  font-size: ${(props) => props.theme.fontSize};
-  color: ${(props) => props.theme.color};
+export const Text = styled.p`
+  font-family: ${({ theme }) => theme.fontFamily};
+  font-size: ${({ theme }) => theme.fontSize};
+  line-height: ${({ theme }) => theme.lineHeight};
+  color: ${({ theme }) => theme.color};
 `;
-
-export const Text: FC<TextProps> = (props) => {
-  return <StyledText {...props}>{props.children}</StyledText>;
-};
