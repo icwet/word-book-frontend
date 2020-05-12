@@ -8,14 +8,14 @@ declare module "styled-components" {
     color: string;
   }
   export interface IconThemeTypes {
-    position: string;
-    top: string;
-    left: string;
-    right: string;
-    bottom: string;
+    position?: string;
+    top?: string;
+    left?: string;
+    right?: string;
+    bottom?: string;
     width: string;
     height: string;
-    margin: string | number;
+    margin?: string | number;
     background: string;
   }
 }

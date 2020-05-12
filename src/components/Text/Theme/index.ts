@@ -7,7 +7,7 @@ export const TextDefaultTheme: TextThemeTypes = {
   color: "#000",
 };
 
-export const TextDarkTheme: TextThemeTypes = {
+export const TextDisabledTheme: TextThemeTypes = {
   ...TextDefaultTheme,
-  color: "#fff",
+  color: "#AAAAAA",
 };
