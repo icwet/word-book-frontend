@@ -1,21 +1,27 @@
 import "styled-components";
 
 declare module "styled-components" {
-  export interface TextThemeTypes {
-    fontFamily: string;
-    fontSize: string;
-    lineHeight: string;
-    color: string;
-  }
-  export interface IconThemeTypes {
-    position?: string;
-    top?: string;
-    left?: string;
-    right?: string;
-    bottom?: string;
-    width: string;
-    height: string;
-    margin?: string | number;
-    background: string;
+  export interface DefaultTheme {
+    fontFamily: {
+      Roboto: string;
+    };
+    fontSize: {
+      s: string;
+      m: string;
+      l: string;
+      xl: string;
+    };
+    color: {
+      text: {
+        current: string;
+        alt: string;
+      };
+    };
+    lineHeight: {
+      s: string;
+      m: string;
+      l: string;
+      xl: string;
+    };
   }
 }
