@@ -23,5 +23,26 @@ declare module "styled-components" {
       l: string;
       xl: string;
     };
+    icons: {
+      user: string;
+      more: string;
+      back: string;
+      close: string;
+      add: string;
+      sizes: {
+        s: {
+          width: string;
+          height: string;
+        };
+        m: {
+          width: string;
+          height: string;
+        };
+        l: {
+          width: string;
+          height: string;
+        };
+      };
+    };
   }
 }

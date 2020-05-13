@@ -1,25 +1,29 @@
-import { IconThemeTypes } from "styled-components";
-import user from "../Images/user.svg";
-import plus from "../Images/plus.svg";
-import arrow from "../Images/arrow.svg";
+import user from "components/Icon/Images/user.svg";
+import more from "components/Icon/Images/more.svg";
+import back from "components/Icon/Images/back.svg";
+import close from "components/Icon/Images/close.svg";
+import add from "components/Icon/Images/add.svg";
 
-export const IconDefaultTheme: IconThemeTypes = {
-  width: "20px",
-  height: "20px",
-  background: "url('')",
-};
-
-export const IconUserTheme: IconThemeTypes = {
-  ...IconDefaultTheme,
-  background: `url(${user}) center/contain no-repeat`,
-};
-
-export const IconPlusTheme: IconThemeTypes = {
-  ...IconDefaultTheme,
-  background: `url(${plus}) center/contain no-repeat`,
-};
-
-export const IconArrowTheme: IconThemeTypes = {
-  ...IconDefaultTheme,
-  background: `url(${arrow}) center/contain no-repeat`,
+export const IconTheme = {
+  icons: {
+    user: user,
+    more: more,
+    back: back,
+    close: close,
+    add: add,
+    sizes: {
+      s: {
+        width: "20px",
+        height: "20px",
+      },
+      m: {
+        width: "40px",
+        height: "40px",
+      },
+      l: {
+        width: "88px",
+        height: "88px",
+      },
+    },
+  },
 };
