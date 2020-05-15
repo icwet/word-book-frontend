@@ -15,12 +15,8 @@ export const App: FC<Props> = () => {
     window.matchMedia("(prefers-color-scheme: light)").matches
   );
 
-  const theme = {
-    ...defaultTheme,
-  };
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={defaultTheme}>
       <Font />
 
       <Login />

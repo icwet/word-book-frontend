@@ -5,7 +5,7 @@ import close from "components/Icon/Images/close.svg";
 import add from "components/Icon/Images/add.svg";
 
 export const IconTheme = {
-  icons: {
+  Icon: {
     user: user,
     more: more,
     back: back,

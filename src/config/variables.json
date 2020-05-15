@@ -2,6 +2,9 @@
   "colors": {
     "baseBlack": "#000000",
     "baseWhite": "#FFFFFF",
-    "baseGray": "#AAAAAA"
+    "baseGray": "#AAAAAA",
+    "Input": {
+      "baseGray": "#F3F2F5"
+    }
   }
 }

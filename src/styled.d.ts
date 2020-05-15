@@ -2,28 +2,28 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    fontFamily: {
-      Roboto: string;
-    };
-    fontSize: {
-      s: string;
-      m: string;
-      l: string;
-      xl: string;
-    };
-    color: {
-      text: {
+    Text: {
+      fontFamily: {
+        Roboto: string;
+      };
+      fontSize: {
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+      };
+      color: {
         current: string;
         alt: string;
       };
+      lineHeight: {
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+      };
     };
-    lineHeight: {
-      s: string;
-      m: string;
-      l: string;
-      xl: string;
-    };
-    icons: {
+    Icon: {
       user: string;
       more: string;
       back: string;
@@ -41,6 +41,42 @@ declare module "styled-components" {
         l: {
           width: string;
           height: string;
+        };
+      };
+    };
+    Input: {
+      background: string;
+      weight: {
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        800: string;
+      };
+      sizes: {
+        s: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius: string;
+        };
+        m: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius: string;
+        };
+        l: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius: string;
+        };
+        xl: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius: string;
         };
       };
     };
