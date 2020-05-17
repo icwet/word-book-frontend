@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
-import store from "store/store";
+import store from "store";
 
 const history = createBrowserHistory();
 
