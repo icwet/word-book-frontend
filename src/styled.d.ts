@@ -79,6 +79,14 @@ declare module "styled-components" {
           borderRadius: string;
         };
       };
+      icon: {
+        search: {
+          width: string;
+          height: string;
+          paddingLeft: string;
+          background: string;
+        };
+      };
     };
   }
 }

@@ -3,11 +3,10 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./Theme";
 import { Login } from "components/Login";
 import { Font } from "components/Font";
-import { baseAuth, baseUrl } from "../../config";
 
-interface Props {}
+interface AppProps {}
 
-export const App: FC<Props> = () => {
+export const App: FC<AppProps> = () => {
   /*const [browserTheme, setTheme] = useState(
     window.matchMedia("(prefers-color-scheme: light)").matches
   );*/

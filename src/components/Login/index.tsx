@@ -1,29 +1,31 @@
-import React, { FC } from "react";
+// Vendor
+import React, { FC, useState } from "react";
+import { PingResult } from "api/types";
+import { getPing } from "api/index";
+import { fetchTestData } from "../App/Actions";
+// Components
 import { Text } from "components/Text";
-import { Icon } from "../Icon";
-import { Input } from "../Input";
-import { baseAuth, baseUrl } from "../../config";
+import { Icon } from "components/Icon";
+import { Input } from "components/Input";
+import { useDispatch } from "react-redux";
 
 export const Login: FC = () => {
-  const testApiRequest = async () => {
-    const response = await fetch(`${baseUrl}/ping`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Authorization: `Basic ${baseAuth}`,
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-        "Access-Control-Allow-Credentials": "true",
-      },
-    });
-    return await response.json();
-  };
+  const dispatch = useDispatch();
+
+  async function testFetch() {
+    try {
+      await Promise.all([dispatch(fetchTestData())]);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <div>
       <Text>WordBook</Text>
       <Icon image="user" />
-      <Input />
-      <button onClick={() => testApiRequest()}>test</button>
+      <Input placeholderText="Search..." />
+      <button onClick={() => testFetch()}>test ping</button>
     </div>
   );
 };

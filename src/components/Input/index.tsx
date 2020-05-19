@@ -7,9 +7,11 @@ interface InputProps {
   themeSize?: string;
   type?: string;
   icon?: string;
+  placeholderText?: string;
 }
 
 const StyledInput = styled.input<InputProps>`
+  position: relative;
   width: ${({ theme, themeSize }) => {
     switch (themeSize) {
       case "s":
@@ -38,26 +40,98 @@ const StyledInput = styled.input<InputProps>`
         return "initial";
     }
   }};
-  border: ${({ theme, themeSize }) => {
+  padding: ${({ theme, themeSize }) => {
     switch (themeSize) {
       case "s":
-        return theme.Input.sizes.s.width;
+        return theme.Input.sizes.s.padding;
       case "m":
-        return theme.Input.sizes.m.width;
+        return theme.Input.sizes.m.padding;
       case "l":
-        return theme.Input.sizes.l.width;
+        return theme.Input.sizes.l.padding;
       case "xl":
-        return theme.Input.sizes.xl.width;
+        return theme.Input.sizes.xl.padding;
+      default:
+        return theme.Input.sizes.s.padding;
+    }
+  }};
+  padding-left: ${({ icon }) => {
+    if (icon) {
+      return "36px";
+    }
+  }};
+  background: ${({ theme }) => theme.Input.background || "initial"};
+  border-radius: ${({ theme, themeSize }) => {
+    switch (themeSize) {
+      case "s":
+        return theme.Input.sizes.s.borderRadius;
+      case "m":
+        return theme.Input.sizes.m.borderRadius;
+      case "l":
+        return theme.Input.sizes.l.borderRadius;
+      case "xl":
+        return theme.Input.sizes.xl.borderRadius;
       default:
         return theme.Input.sizes.s.borderRadius;
     }
   }};
+  border: none;
+  outline: none;
 `;
 
-export const Input: FC<InputProps> = ({ theme, children, themeSize }) => {
+const StyledInputIcon = styled.div<InputProps>`
+  content: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 12px;
+  margin: auto;
+  width: ${({ theme, icon }) => {
+    switch (icon) {
+      case "search":
+        return theme.Input.icon.search.width;
+      default:
+        return "";
+    }
+  }};
+  height: ${({ theme, icon }) => {
+    switch (icon) {
+      case "search":
+        return theme.Input.icon.search.height;
+      default:
+        return "";
+    }
+  }};
+  background: ${({ theme, icon }) => {
+    switch (icon) {
+      case "search":
+        return theme.Input.icon.search.background;
+      default:
+        return "";
+    }
+  }};
+`;
+
+const StyledDiv = styled.div`
+  position: relative;
+`;
+
+export const Input: FC<Readonly<InputProps>> = ({
+  theme,
+  themeSize,
+  type,
+  icon,
+  placeholderText,
+}) => {
   return (
-    <StyledInput {...theme} themeSize={themeSize}>
-      {children}
-    </StyledInput>
+    <StyledDiv>
+      <StyledInput
+        {...theme}
+        themeSize={themeSize}
+        placeholder={placeholderText}
+        type={type}
+        icon={icon}
+      />
+      {icon && <StyledInputIcon {...theme} icon={icon} />}
+    </StyledDiv>
   );
 };
