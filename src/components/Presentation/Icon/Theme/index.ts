@@ -1,8 +1,8 @@
-import user from "components/Icon/Images/user.svg";
-import more from "components/Icon/Images/more.svg";
-import back from "components/Icon/Images/back.svg";
-import close from "components/Icon/Images/close.svg";
-import add from "components/Icon/Images/add.svg";
+import user from "components/Presentation/Icon/Images/user.svg";
+import more from "components/Presentation/Icon/Images/more.svg";
+import back from "components/Presentation/Icon/Images/back.svg";
+import close from "components/Presentation/Icon/Images/close.svg";
+import add from "components/Presentation/Icon/Images/add.svg";
 
 export const IconTheme = {
   Icon: {

@@ -1,21 +1,45 @@
 import React, { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./Theme";
-import { Login } from "components/Login";
-import { Font } from "components/Font";
+import { Login } from "components/Containers/Login";
+import { Font } from "components/Presentation/Font";
+import { Route, Redirect, Switch, RouteProps } from "react-router-dom";
+import { Home } from "components/Containers/Home";
 
-interface AppProps {}
+const fakeAuth = false;
 
-export const App: FC<AppProps> = () => {
-  /*const [browserTheme, setTheme] = useState(
-    window.matchMedia("(prefers-color-scheme: light)").matches
-  );*/
+const PrivateRoute: FC<RouteProps> = ({ children, ...otherProps }) => {
+  return (
+    <Route
+      {...otherProps}
+      render={({ location }) =>
+        fakeAuth ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+};
 
+export const App: FC = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Font />
-
-      <Login />
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <PrivateRoute path="/">
+          <Home />
+        </PrivateRoute>
+      </Switch>
     </ThemeProvider>
   );
 };

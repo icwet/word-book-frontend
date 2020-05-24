@@ -88,5 +88,51 @@ declare module "styled-components" {
         };
       };
     };
+    Button: {
+      theme: {
+        main: {
+          background: string;
+          color: string;
+        };
+        alt: {
+          background: string;
+          color: string;
+        };
+        disabled: {
+          background: string;
+          color: string;
+        };
+        warning: {
+          background: string;
+          color: string;
+        };
+      };
+      sizes: {
+        s: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius?: string;
+          fontSize: string;
+          lineHeight?: string;
+        };
+        m: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius?: string;
+          fontSize: string;
+          lineHeight?: string;
+        };
+        l: {
+          width?: string;
+          height?: string;
+          padding: string;
+          borderRadius?: string;
+          fontSize: string;
+          lineHeight?: string;
+        };
+      };
+    };
   }
 }

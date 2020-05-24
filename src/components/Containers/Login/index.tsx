@@ -1,12 +1,11 @@
 // Vendor
-import React, { FC, useState } from "react";
-import { PingResult } from "api/types";
-import { getPing } from "api/index";
-import { fetchTestData } from "../App/Actions";
+import React, { FC } from "react";
+import { fetchTestData } from "./Actions";
 // Components
-import { Text } from "components/Text";
-import { Icon } from "components/Icon";
-import { Input } from "components/Input";
+import { Text } from "components/Presentation/Text";
+import { Icon } from "components/Presentation/Icon";
+import { Button } from "components/Presentation/Button";
+import { Input } from "components/Presentation/Input";
 import { useDispatch } from "react-redux";
 
 export const Login: FC = () => {
@@ -25,7 +24,7 @@ export const Login: FC = () => {
       <Text>WordBook</Text>
       <Icon image="user" />
       <Input placeholderText="Search..." />
-      <button onClick={() => testFetch()}>test ping</button>
+      <Button onClick={() => testFetch()}>test ping</Button>
     </div>
   );
 };

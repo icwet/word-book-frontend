@@ -3,7 +3,7 @@ import { combineReducers, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { configureStore, Action } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
 // Reducers
-import appTest from "components/App/Actions/index";
+import appTest from "components/Containers/Login/Actions/index";
 
 const rootReducer = combineReducers({
   appTest: appTest,
