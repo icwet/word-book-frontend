@@ -23,7 +23,7 @@ export const Login: FC = () => {
     <div>
       <Text>WordBook</Text>
       <Icon image="user" />
-      <Input placeholderText="Search..." />
+      <Input icon="search" placeholderText="Search..." />
       <Button onClick={() => testFetch()}>test ping</Button>
     </div>
   );

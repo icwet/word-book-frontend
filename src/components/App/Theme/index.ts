@@ -3,12 +3,14 @@ import { IconTheme } from "components/Presentation/Icon/Theme";
 import { TextTheme } from "components/Presentation/Text/Theme";
 import { InputTheme } from "components/Presentation/Input/Theme";
 import { ButtonTheme } from "components/Presentation/Button/Theme";
+import { LayoutTheme } from "components/Presentation/Layout/Theme";
 
 const defaultTheme: DefaultTheme = {
   ...TextTheme,
   ...IconTheme,
   ...InputTheme,
   ...ButtonTheme,
+  ...LayoutTheme,
 };
 
 export { defaultTheme };

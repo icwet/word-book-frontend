@@ -134,5 +134,49 @@ declare module "styled-components" {
         };
       };
     };
+    Layout: {
+      type: {
+        main: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        words: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        collections: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        profile: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        addWords: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        password: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        popup: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+        modal: {
+          display: string;
+          grid: string;
+          background?: string;
+        };
+      };
+    };
   }
 }
