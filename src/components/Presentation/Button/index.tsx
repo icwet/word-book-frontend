@@ -2,95 +2,47 @@ import styled, { DefaultTheme } from "styled-components";
 
 interface ButtonProps {
   readonly theme: DefaultTheme;
-  readonly buttonTheme?: string;
-  readonly size?: string;
+  readonly buttonTheme?: "main" | "alt" | "disabled" | "warning";
+  readonly size?: "s" | "m" | "l";
 }
 
+const switchCSSProp: Function = (
+  theme: DefaultTheme,
+  size: string,
+  prop: keyof typeof theme.Button.sizes.s
+) => {
+  switch (size) {
+    case "s":
+      return theme.Button.sizes.s[prop];
+    case "m":
+      return theme.Button.sizes.m[prop];
+    case "l":
+      return theme.Button.sizes.l[prop];
+    default:
+      return theme.Button.sizes.s[prop];
+  }
+};
+
 export const Button = styled.button<ButtonProps>`
-  width: ${({ theme, size }) => {
-    switch (size) {
-      case "s":
-        return theme.Button.sizes.s.width;
-      case "m":
-        return theme.Button.sizes.m.width;
-      case "l":
-        return theme.Button.sizes.l.width;
-      default:
-        return theme.Button.sizes.s.width;
-    }
-  }};
-  height: ${({ theme, size }) => {
-    switch (size) {
-      case "s":
-        return theme.Button.sizes.s.height;
-      case "m":
-        return theme.Button.sizes.m.height;
-      case "l":
-        return theme.Button.sizes.l.height;
-      default:
-        return theme.Button.sizes.s.height;
-    }
-  }};
-  padding: ${({ theme, size }) => {
-    switch (size) {
-      case "s":
-        return theme.Button.sizes.s.padding;
-      case "m":
-        return theme.Button.sizes.m.padding;
-      case "l":
-        return theme.Button.sizes.l.padding;
-      default:
-        return theme.Button.sizes.s.padding;
-    }
-  }};
-  font-size: ${({ theme, size }) => {
-    switch (size) {
-      case "s":
-        return theme.Button.sizes.s.fontSize;
-      case "m":
-        return theme.Button.sizes.m.fontSize;
-      case "l":
-        return theme.Button.sizes.l.fontSize;
-      default:
-        return theme.Button.sizes.s.fontSize;
-    }
-  }};
-  line-height: ${({ theme, size }) => {
-    switch (size) {
-      case "s":
-        return theme.Button.sizes.s.lineHeight;
-      case "m":
-        return theme.Button.sizes.m.lineHeight;
-      case "l":
-        return theme.Button.sizes.l.lineHeight;
-      default:
-        return theme.Button.sizes.s.lineHeight;
-    }
-  }};
-  border-radius: ${({ theme, size }) => {
-    switch (size) {
-      case "s":
-        return theme.Button.sizes.s.borderRadius;
-      case "m":
-        return theme.Button.sizes.m.borderRadius;
-      case "l":
-        return theme.Button.sizes.l.borderRadius;
-      default:
-        return theme.Button.sizes.s.borderRadius;
-    }
-  }};
+  width: ${({ theme, size }) => switchCSSProp(theme, size, "width")};
+  height: ${({ theme, size }) => switchCSSProp(theme, size, "height")};
+  padding: ${({ theme, size }) => switchCSSProp(theme, size, "padding")};
+  font-size: ${({ theme, size }) => switchCSSProp(theme, size, "fontSize")};
+  line-height: ${({ theme, size }) => switchCSSProp(theme, size, "lineHeight")};
+  border-radius: ${({ theme, size }) =>
+    switchCSSProp(theme, size, "borderRadius")};
   color: ${({ theme, buttonTheme }) => {
     switch (buttonTheme) {
       case "main":
-        return theme.Button.theme.main;
+        return theme.Button.theme.main.color;
       case "alt":
-        return theme.Button.theme.alt;
+        return theme.Button.theme.alt.color;
       case "disabled":
-        return theme.Button.theme.disabled;
+        return theme.Button.theme.disabled.color;
       case "warning":
-        return theme.Button.theme.warning;
+        return theme.Button.theme.warning.color;
       default:
-        return theme.Button.theme.main;
+        return theme.Button.theme.main.color;
     }
   }};
   background: ${({ theme, buttonTheme }) => {

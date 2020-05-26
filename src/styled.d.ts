@@ -139,42 +139,142 @@ declare module "styled-components" {
         main: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         words: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         collections: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         profile: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         addWords: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         password: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         popup: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
         };
         modal: {
           display: string;
           grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
           background?: string;
+        };
+      };
+    };
+    Section: {
+      type: {
+        header: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        search: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        button: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        buttons: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        imageText: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        popup: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        modal: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
+        };
+        groupNumber: {
+          display: string;
+          grid: string;
+          justifyContent?: string;
+          justifyItems?: string;
+          alignContent?: string;
+          alignItems?: string;
         };
       };
     };

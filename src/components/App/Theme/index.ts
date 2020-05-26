@@ -4,6 +4,7 @@ import { TextTheme } from "components/Presentation/Text/Theme";
 import { InputTheme } from "components/Presentation/Input/Theme";
 import { ButtonTheme } from "components/Presentation/Button/Theme";
 import { LayoutTheme } from "components/Presentation/Layout/Theme";
+import { SectionTheme } from "components/Presentation/Section/Theme";
 
 const defaultTheme: DefaultTheme = {
   ...TextTheme,
@@ -11,6 +12,7 @@ const defaultTheme: DefaultTheme = {
   ...InputTheme,
   ...ButtonTheme,
   ...LayoutTheme,
+  ...SectionTheme,
 };
 
 export { defaultTheme };

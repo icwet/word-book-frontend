@@ -3,11 +3,11 @@ import { DefaultTheme } from "styled-components";
 import styled from "styled-components";
 
 interface InputProps {
-  theme?: DefaultTheme;
-  themeSize?: string;
-  type?: string;
-  icon?: string;
-  placeholderText?: string;
+  readonly theme?: DefaultTheme;
+  readonly themeSize?: "s" | "m" | "l" | "xl";
+  readonly weight?: "300" | "400" | "500" | "600" | "800";
+  readonly icon?: "search";
+  readonly placeholderText?: string;
 }
 
 const StyledInput = styled.input<InputProps>`
@@ -118,7 +118,7 @@ const StyledDiv = styled.div`
 export const Input: FC<Readonly<InputProps>> = ({
   theme,
   themeSize,
-  type,
+  weight,
   icon,
   placeholderText,
 }) => {
@@ -128,7 +128,7 @@ export const Input: FC<Readonly<InputProps>> = ({
         {...theme}
         themeSize={themeSize}
         placeholder={placeholderText}
-        type={type}
+        weight={weight}
         icon={icon}
       />
       {icon && <StyledInputIcon {...theme} icon={icon} />}

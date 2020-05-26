@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface TextProps {
-  readonly size?: string;
-  readonly color?: string;
+  readonly size?: "s" | "m" | "l" | "xl";
+  readonly color?: "disabled";
   readonly bold?: boolean;
 }
 

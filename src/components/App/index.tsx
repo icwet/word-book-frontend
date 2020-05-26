@@ -1,6 +1,8 @@
+// Vendor
 import React, { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./Theme";
+// Components
 import { Login } from "components/Containers/Login";
 import { Font } from "components/Presentation/Font";
 import { Route, Redirect, Switch, RouteProps } from "react-router-dom";

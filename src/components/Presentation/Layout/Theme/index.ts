@@ -3,7 +3,10 @@ export const LayoutTheme = {
     type: {
       main: {
         display: "grid",
-        grid: "",
+        grid: `[row1-start] "header header header" 56px [row1-end]
+        [row2-start] "search search search" 1fr [row2-end]
+        [row3-start] "main main main" 1fr [row3-end]
+        / 1fr auto auto`,
         background: "",
       },
       words: {

@@ -1,47 +1,48 @@
+// Vendor
 import React, { FC } from "react";
 import styled, { DefaultTheme } from "styled-components";
 
-interface LayoutProps {
+interface SectionProps {
   readonly theme?: DefaultTheme;
   readonly layout?:
-    | "main"
-    | "words"
-    | "collections"
-    | "profile"
-    | "addWords"
-    | "password"
+    | "header"
+    | "search"
+    | "button"
+    | "buttons"
+    | "imageText"
     | "popup"
-    | "modal";
+    | "modal"
+    | "groupNumber";
 }
 
 const switchCSSProp: Function = (
   theme: DefaultTheme,
   layout: string,
-  prop: keyof typeof theme.Layout.type.main
+  prop: keyof typeof theme.Section.type.header
 ) => {
   switch (layout) {
-    case "main":
-      return theme.Layout.type.main[prop];
-    case "words":
-      return theme.Layout.type.words[prop];
-    case "collections":
-      return theme.Layout.type.collections[prop];
-    case "profile":
-      return theme.Layout.type.profile[prop];
-    case "addWords":
-      return theme.Layout.type.addWords[prop];
-    case "password":
-      return theme.Layout.type.password[prop];
+    case "header":
+      return theme.Section.type.header[prop];
+    case "search":
+      return theme.Section.type.search[prop];
+    case "button":
+      return theme.Section.type.button[prop];
+    case "buttons":
+      return theme.Section.type.buttons[prop];
+    case "imageText":
+      return theme.Section.type.imageText[prop];
     case "popup":
-      return theme.Layout.type.popup[prop];
+      return theme.Section.type.popup[prop];
     case "modal":
-      return theme.Layout.type.modal[prop];
+      return theme.Section.type.modal[prop];
+    case "groupNumber":
+      return theme.Section.type.groupNumber[prop];
     default:
-      return theme.Layout.type.main[prop];
+      return theme.Section.type.header[prop];
   }
 };
 
-const StyledSection = styled.main<LayoutProps>`
+const StyledSection = styled.div<SectionProps>`
   display: ${({ theme, layout }) => switchCSSProp(theme, layout, "display")};
   grid: ${({ theme, layout }) => switchCSSProp(theme, layout, "grid")};
   justify-content: ${({ theme, layout }) =>
@@ -56,7 +57,7 @@ const StyledSection = styled.main<LayoutProps>`
     switchCSSProp(theme, layout, "background")};
 `;
 
-export const Layout: FC<LayoutProps> = ({ theme, layout, children }) => {
+export const Section: FC<SectionProps> = ({ theme, layout, children }) => {
   return (
     <StyledSection theme={theme} layout={layout}>
       {children}
