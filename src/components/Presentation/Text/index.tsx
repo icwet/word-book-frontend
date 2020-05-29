@@ -1,7 +1,10 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
+
+type TextSize = "s" | "m" | "l" | "xl";
 
 interface TextProps {
-  readonly size?: "s" | "m" | "l" | "xl";
+  readonly theme?: DefaultTheme;
+  readonly size?: TextSize;
   readonly color?: "disabled";
   readonly bold?: boolean;
 }

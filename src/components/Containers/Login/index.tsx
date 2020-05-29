@@ -23,17 +23,23 @@ export const Login: FC = () => {
 
   return (
     <Layout layout="main">
-      <Icon image="user" />
-      <Text>WordBook</Text>
-      <Icon image="more" />
-      <Input icon="search" placeholderText="Search..." />
-      <Icon size="l" image="more" />
-      <Text size="s">You don't have words yet</Text>
-      <Text size="s" color="disabled">
-        Create a self new word set or choose from catalog
-      </Text>
-      <Section>
-        <Button>test ping</Button>
+      <Section layout="header">
+        <Icon image="user" />
+        <Text>WordBook</Text>
+        <Icon image="more" />
+      </Section>
+      <Section layout="search">
+        <Input themeSize="s" icon="search" placeholderText="Search..." />
+      </Section>
+      <Section layout="imageText">
+        <Icon size="l" image="emojiHmm" />
+        <Text size="s">You don't have words yet</Text>
+        <Text size="s" color="disabled">
+          Create a self new word set or choose from catalog
+        </Text>
+      </Section>
+      <Section layout="button">
+        <Button>Add a words set</Button>
       </Section>
     </Layout>
   );

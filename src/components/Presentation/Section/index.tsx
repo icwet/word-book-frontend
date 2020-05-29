@@ -45,6 +45,7 @@ const switchCSSProp: Function = (
 const StyledSection = styled.div<SectionProps>`
   display: ${({ theme, layout }) => switchCSSProp(theme, layout, "display")};
   grid: ${({ theme, layout }) => switchCSSProp(theme, layout, "grid")};
+  padding: ${({ theme, layout }) => switchCSSProp(theme, layout, "padding")};
   justify-content: ${({ theme, layout }) =>
     switchCSSProp(theme, layout, "justifyContent")};
   justify-items: ${({ theme, layout }) =>

@@ -1,18 +1,20 @@
 import { DefaultTheme } from "styled-components";
-import { IconTheme } from "components/Presentation/Icon/Theme";
-import { TextTheme } from "components/Presentation/Text/Theme";
-import { InputTheme } from "components/Presentation/Input/Theme";
-import { ButtonTheme } from "components/Presentation/Button/Theme";
-import { LayoutTheme } from "components/Presentation/Layout/Theme";
-import { SectionTheme } from "components/Presentation/Section/Theme";
+import { Icon } from "components/Presentation/Icon/Theme";
+import { Text } from "components/Presentation/Text/Theme";
+import { Input } from "components/Presentation/Input/Theme";
+import { Button } from "components/Presentation/Button/Theme";
+import { Layout } from "components/Presentation/Layout/Theme";
+import { Section } from "components/Presentation/Section/Theme";
+import { Popup } from "components/Presentation/Popup/Theme";
 
 const defaultTheme: DefaultTheme = {
-  ...TextTheme,
-  ...IconTheme,
-  ...InputTheme,
-  ...ButtonTheme,
-  ...LayoutTheme,
-  ...SectionTheme,
+  Text,
+  Icon,
+  Input,
+  Button,
+  Layout,
+  Section,
+  Popup,
 };
 
 export { defaultTheme };

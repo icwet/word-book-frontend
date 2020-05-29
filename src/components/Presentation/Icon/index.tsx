@@ -1,8 +1,17 @@
 import styled, { DefaultTheme } from "styled-components";
 
-interface IconProps {
-  readonly size?: "s" | "m" | "l";
-  readonly image: "user" | "more" | "back" | "close" | "add";
+export type IconSize = "s" | "m" | "l";
+export type IconPicture =
+  | "user"
+  | "more"
+  | "back"
+  | "close"
+  | "add"
+  | "emojiHmm";
+
+export interface IconProps {
+  readonly size?: IconSize;
+  readonly image: IconPicture;
 }
 
 const switchCSSProp: Function = (
@@ -37,6 +46,8 @@ export const Icon = styled.div<IconProps>`
           return theme.Icon.close;
         case "add":
           return theme.Icon.add;
+        case "emojiHmm":
+          return theme.Icon.emojiHmm;
       }
     }})
     center/contain no-repeat;
