@@ -7,8 +7,8 @@ import { Icon } from "components/Presentation/Icon";
 import { Button } from "components/Presentation/Button";
 import { Input } from "components/Presentation/Input";
 import { Layout } from "components/Presentation/Layout";
-import { Section } from "../../Presentation/Section";
-import { Popup } from "../../Presentation/Popup";
+import { Section } from "components/Presentation/Section";
+import { Popup } from "components/Presentation/Popup";
 // import { useDispatch } from "react-redux";
 
 export const Login: FC = () => {
@@ -39,10 +39,20 @@ export const Login: FC = () => {
           Create a self new word set or choose from catalog
         </Text>
       </Section>
-      <Section layout="button">
-        <Button>Add a words set</Button>
-      </Section>
-      <Popup type="login" />
+      <Popup>
+        <Text size="m">Free to learn words</Text>
+        <Text size="m" color="disabled">
+          append your words to the dictionary or choose from categories
+        </Text>
+        <Section layout="popup">
+          <Button size="m" buttonTheme="alt">
+            Sign in
+          </Button>
+          <Button size="m" buttonTheme="transparent">
+            Sign up
+          </Button>
+        </Section>
+      </Popup>
     </Layout>
   );
 };

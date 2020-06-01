@@ -123,8 +123,8 @@ export const Section: SectionTheme = {
       alignItems: "",
     },
     popup: {
-      display: "",
-      grid: "",
+      display: "grid",
+      grid: "1fr / 1.5fr 1fr",
       padding: "",
       justifyContent: "",
       justifyItems: "",

@@ -2,17 +2,19 @@
 import React, { FC } from "react";
 import styled, { DefaultTheme } from "styled-components";
 
+export type SectionPatterns =
+  | "header"
+  | "search"
+  | "button"
+  | "buttons"
+  | "imageText"
+  | "popup"
+  | "modal"
+  | "groupNumber";
+
 interface SectionProps {
   readonly theme?: DefaultTheme;
-  readonly layout?:
-    | "header"
-    | "search"
-    | "button"
-    | "buttons"
-    | "imageText"
-    | "popup"
-    | "modal"
-    | "groupNumber";
+  readonly layout?: SectionPatterns;
 }
 
 const switchCSSProp: Function = (

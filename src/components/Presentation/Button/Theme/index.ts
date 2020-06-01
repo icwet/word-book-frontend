@@ -18,6 +18,10 @@ export interface ButtonTheme {
       background: string;
       color: string;
     };
+    transparent: {
+      background: string;
+      color: string;
+    };
   };
   sizes: {
     s: {
@@ -64,6 +68,10 @@ export const Button: ButtonTheme = {
     warning: {
       background: colors.Button.baseWarning,
       color: colors.Button.baseWhite,
+    },
+    transparent: {
+      background: "transparent",
+      color: colors.Button.baseBlack,
     },
   },
   sizes: {

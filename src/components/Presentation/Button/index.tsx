@@ -1,6 +1,11 @@
 import styled, { DefaultTheme } from "styled-components";
 
-export type ButtonTheme = "main" | "alt" | "disabled" | "warning";
+export type ButtonTheme =
+  | "main"
+  | "alt"
+  | "disabled"
+  | "warning"
+  | "transparent";
 export type ButtonSize = "s" | "m" | "l";
 
 interface ButtonProps {
@@ -44,6 +49,8 @@ export const Button = styled.button<ButtonProps>`
         return theme.Button.theme.disabled.color;
       case "warning":
         return theme.Button.theme.warning.color;
+      case "transparent":
+        return theme.Button.theme.transparent.color;
       default:
         return theme.Button.theme.main.color;
     }
@@ -58,6 +65,8 @@ export const Button = styled.button<ButtonProps>`
         return theme.Button.theme.disabled.background;
       case "warning":
         return theme.Button.theme.warning.background;
+      case "transparent":
+        return theme.Button.theme.transparent.background;
       default:
         return theme.Button.theme.main.background;
     }

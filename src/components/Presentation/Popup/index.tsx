@@ -1,9 +1,4 @@
-import React, { FC } from "react";
 import styled, { DefaultTheme } from "styled-components";
-// Components
-import { Text } from "../Text";
-import { Button } from "../Button";
-
 type PopupSizes = "default";
 type PopupTypes = "login";
 
@@ -13,7 +8,7 @@ interface PopupProps {
   readonly size?: PopupSizes;
 }
 
-const LoginPopup = styled.div<PopupProps>`
+export const Popup = styled.div<PopupProps>`
   position: ${({ theme, size }) => {
     switch (size) {
       case "default":
@@ -103,29 +98,3 @@ const LoginPopup = styled.div<PopupProps>`
     }
   }};
 `;
-
-export const Popup: FC<PopupProps> = ({ type, theme, size }) => {
-  switch (type) {
-    case "login":
-      return (
-        <LoginPopup theme={theme} size={size}>
-          <div>
-            <Text size="m">Free to learn words</Text>
-          </div>
-          <div>
-            <Text size="m" color="disabled">
-              append your words to the dictionary or choose from categories
-            </Text>
-          </div>
-          <div>
-            <Button size="m" buttonTheme="alt">
-              Sign in
-            </Button>
-            <Button size="m">Sign up</Button>
-          </div>
-        </LoginPopup>
-      );
-    default:
-      return <LoginPopup theme={theme} size={size}></LoginPopup>;
-  }
-};
