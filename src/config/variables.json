@@ -9,8 +9,12 @@
     "Button": {
       "baseBlack": "#000000",
       "baseWhite": "#FFFFFF",
-      "baseGray": "#AAAAAA",
+      "baseGray": "#F3F2F5",
       "baseWarning": "#FFC107"
+    },
+    "Popup": {
+      "baseBlack": "#000000",
+      "baseWhite": "#FFFFFF"
     }
   }
 }

@@ -1,3 +1,4 @@
+import { colors } from "config/variables.json";
 export interface PopupTheme {
   size: {
     default: {
@@ -12,7 +13,8 @@ export interface PopupTheme {
       margin: string;
       boxShadow: string;
       background: string;
-      zIndex: string;
+      borderRadius: string;
+      "z-index": string;
     };
   };
 }
@@ -22,16 +24,18 @@ export const Popup: PopupTheme = {
     default: {
       position: "absolute",
       display: "grid",
-      grid: "",
-      top: "",
+      grid: "24px 52px / 1fr",
+      top: "104px",
       bottom: "",
-      left: "",
-      right: "",
-      padding: "",
-      margin: "",
-      boxShadow: "",
-      background: "",
-      zIndex: "",
+      left: "16px",
+      right: "16px",
+      padding: "16px",
+      margin: "auto",
+      boxShadow:
+        "0px 5px 16px rgba(0, 0, 0, 0.08), 0px 4px 4px rgba(0, 0, 0, 0.04)",
+      borderRadius: "4px",
+      background: colors.Popup.baseWhite,
+      "z-index": "100",
     },
   },
 };

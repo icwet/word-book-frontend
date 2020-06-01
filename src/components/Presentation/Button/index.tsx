@@ -1,9 +1,12 @@
 import styled, { DefaultTheme } from "styled-components";
 
+export type ButtonTheme = "main" | "alt" | "disabled" | "warning";
+export type ButtonSize = "s" | "m" | "l";
+
 interface ButtonProps {
   readonly theme: DefaultTheme;
-  readonly buttonTheme?: "main" | "alt" | "disabled" | "warning";
-  readonly size?: "s" | "m" | "l";
+  readonly buttonTheme?: ButtonTheme;
+  readonly size?: ButtonSize;
 }
 
 const switchCSSProp: Function = (

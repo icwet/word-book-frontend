@@ -8,6 +8,7 @@ import { Button } from "components/Presentation/Button";
 import { Input } from "components/Presentation/Input";
 import { Layout } from "components/Presentation/Layout";
 import { Section } from "../../Presentation/Section";
+import { Popup } from "../../Presentation/Popup";
 // import { useDispatch } from "react-redux";
 
 export const Login: FC = () => {
@@ -33,14 +34,15 @@ export const Login: FC = () => {
       </Section>
       <Section layout="imageText">
         <Icon size="l" image="emojiHmm" />
-        <Text size="s">You don't have words yet</Text>
-        <Text size="s" color="disabled">
+        <Text size="l">You don't have words yet</Text>
+        <Text size="m" color="disabled">
           Create a self new word set or choose from catalog
         </Text>
       </Section>
       <Section layout="button">
         <Button>Add a words set</Button>
       </Section>
+      <Popup type="login" />
     </Layout>
   );
 };

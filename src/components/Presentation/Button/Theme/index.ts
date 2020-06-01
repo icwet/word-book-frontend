@@ -54,8 +54,8 @@ export const Button: ButtonTheme = {
       color: colors.Button.baseWhite,
     },
     alt: {
-      background: colors.Button.baseWhite,
-      color: colors.Button.baseWhite,
+      background: colors.Button.baseGray,
+      color: colors.Button.baseBlack,
     },
     disabled: {
       background: colors.Button.baseGray,

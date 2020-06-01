@@ -115,8 +115,8 @@ export const Section: SectionTheme = {
     },
     imageText: {
       display: "grid",
-      grid: "112px 24px 48px / 1fr",
-      padding: "",
+      grid: "112px 32px 48px / 1fr",
+      padding: "16px",
       justifyContent: "",
       justifyItems: "center",
       alignContent: "center",
