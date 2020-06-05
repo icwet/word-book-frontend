@@ -1,6 +1,7 @@
 // Vendor
 import React, { FC, useEffect, useState } from "react";
 // import { fetchTestData } from "./Actions";
+import { Formik, Form, Field, FieldProps } from "formik";
 // Components
 import { Text } from "components/Presentation/Text";
 import { Icon } from "components/Presentation/Icon";
@@ -9,6 +10,7 @@ import { Input } from "components/Presentation/Input";
 import { Layout } from "components/Presentation/Layout";
 import { Section } from "components/Presentation/Section";
 import { Popup } from "components/Presentation/Popup";
+import { Modal } from "components/Presentation/Modal";
 // import { useDispatch } from "react-redux";
 
 export const Login: FC = () => {
@@ -21,6 +23,10 @@ export const Login: FC = () => {
       console.log(e);
     }
   }*/
+  interface MyFormValues {
+    firstName: string;
+  }
+  const initialValues: MyFormValues = { firstName: "" };
 
   return (
     <Layout layout="main">
@@ -53,6 +59,44 @@ export const Login: FC = () => {
           </Button>
         </Section>
       </Popup>
+      <Modal>
+        <Formik
+          initialValues={{ name: "Jared" }}
+          onSubmit={(values, actions) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              actions.setSubmitting(false);
+            }, 1000);
+          }}
+        >
+          {(formik) => (
+            <Form>
+              <Section layout="titlePh">
+                <Text size="l">Sign up for learn a words</Text>
+                <Text size="l" color="disabled">
+                  Enter your email and think up password.
+                </Text>
+              </Section>
+              <Section layout="inputs">
+                <Field>
+                  {(props: FieldProps) => (
+                    <Input themeSize="xl" placeholderText="Email" />
+                  )}
+                </Field>
+                <Input themeSize="xl" placeholderText="Name" />
+                <Input themeSize="xl" placeholderText="Password" />
+              </Section>
+              <Section layout="labelButton">
+                <Text size="s">
+                  Продолжая, вы подтверждаите, что ознакомились с Политикой
+                  конфиденциальности и согласны с Условиям работы на платформе
+                </Text>
+                <Button size="l">Next</Button>
+              </Section>
+            </Form>
+          )}
+        </Formik>
+      </Modal>
     </Layout>
   );
 };

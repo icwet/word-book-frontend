@@ -2,6 +2,7 @@ export interface SectionTheme {
   type: {
     header: {
       display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -11,6 +12,7 @@ export interface SectionTheme {
     };
     search: {
       display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -20,6 +22,7 @@ export interface SectionTheme {
     };
     button: {
       display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -29,6 +32,7 @@ export interface SectionTheme {
     };
     buttons: {
       display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -38,6 +42,17 @@ export interface SectionTheme {
     };
     imageText: {
       display: string;
+      gap: string;
+      grid: string;
+      padding?: string;
+      justifyContent?: string;
+      justifyItems?: string;
+      alignContent?: string;
+      alignItems?: string;
+    };
+    titlePh: {
+      display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -47,6 +62,7 @@ export interface SectionTheme {
     };
     popup: {
       display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -56,6 +72,7 @@ export interface SectionTheme {
     };
     modal: {
       display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -65,6 +82,27 @@ export interface SectionTheme {
     };
     groupNumber: {
       display: string;
+      gap: string;
+      grid: string;
+      padding?: string;
+      justifyContent?: string;
+      justifyItems?: string;
+      alignContent?: string;
+      alignItems?: string;
+    };
+    inputs: {
+      display: string;
+      gap: string;
+      grid: string;
+      padding?: string;
+      justifyContent?: string;
+      justifyItems?: string;
+      alignContent?: string;
+      alignItems?: string;
+    };
+    labelButton: {
+      display: string;
+      gap: string;
       grid: string;
       padding?: string;
       justifyContent?: string;
@@ -79,75 +117,73 @@ export const Section: SectionTheme = {
   type: {
     header: {
       display: "grid",
+      gap: "",
       grid: "auto-flow / auto 1fr auto",
       padding: "16px",
-      justifyContent: "",
       justifyItems: "center",
-      alignContent: "",
       alignItems: "center",
     },
     search: {
       display: "grid",
+      gap: "",
       grid: "",
       padding: "0 16px 16px 16px",
-      justifyContent: "",
-      justifyItems: "",
-      alignContent: "",
-      alignItems: "",
     },
     button: {
       display: "grid",
+      gap: "",
       grid: "",
       padding: "16px",
-      justifyContent: "",
-      justifyItems: "",
-      alignContent: "",
-      alignItems: "",
     },
     buttons: {
       display: "",
+      gap: "",
       grid: "",
       padding: "",
-      justifyContent: "",
-      justifyItems: "",
-      alignContent: "",
-      alignItems: "",
     },
     imageText: {
       display: "grid",
+      gap: "",
       grid: "112px 32px 48px / 1fr",
       padding: "16px",
-      justifyContent: "",
       justifyItems: "center",
       alignContent: "center",
-      alignItems: "",
+    },
+    titlePh: {
+      display: "grid",
+      gap: "4px",
+      grid: "",
+      padding: "",
     },
     popup: {
       display: "grid",
+      gap: "",
       grid: "1fr / 1.5fr 1fr",
       padding: "",
-      justifyContent: "",
-      justifyItems: "",
-      alignContent: "",
-      alignItems: "",
     },
     modal: {
       display: "",
+      gap: "",
       grid: "",
       padding: "",
-      justifyContent: "",
-      justifyItems: "",
-      alignContent: "",
-      alignItems: "",
     },
     groupNumber: {
       display: "",
+      gap: "",
       grid: "",
       padding: "",
-      justifyContent: "",
-      justifyItems: "",
-      alignContent: "",
-      alignItems: "",
+    },
+    inputs: {
+      display: "grid",
+      gap: "16px",
+      grid: "auto-flow / 1fr",
+      padding: "24px 0 92px 0",
+    },
+    labelButton: {
+      display: "grid",
+      gap: "16px",
+      grid: "",
+      padding: "",
     },
   },
 };

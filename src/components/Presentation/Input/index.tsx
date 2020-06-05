@@ -2,12 +2,16 @@ import React, { FC } from "react";
 import { DefaultTheme } from "styled-components";
 import styled from "styled-components";
 
+type InputSize = "s" | "m" | "l" | "xl";
+type TextWeight = "300" | "400" | "500" | "600" | "800";
+type InputIcon = "search";
+
 interface InputProps {
-  readonly theme?: DefaultTheme;
-  readonly themeSize?: "s" | "m" | "l" | "xl";
-  readonly weight?: "300" | "400" | "500" | "600" | "800";
-  readonly icon?: "search";
-  readonly placeholderText?: string;
+  theme?: DefaultTheme;
+  themeSize?: InputSize;
+  weight?: TextWeight;
+  icon?: InputIcon;
+  placeholderText?: string;
 }
 
 const StyledInput = styled.input<InputProps>`
@@ -78,7 +82,7 @@ const StyledInput = styled.input<InputProps>`
   outline: none;
 `;
 
-const StyledInputIcon = styled.div<InputProps>`
+const Icon = styled.div<InputProps>`
   content: none;
   position: absolute;
   top: 0;
@@ -111,27 +115,25 @@ const StyledInputIcon = styled.div<InputProps>`
   }};
 `;
 
-const StyledDiv = styled.div`
-  position: relative;
-`;
-
 export const Input: FC<Readonly<InputProps>> = ({
   theme,
   themeSize,
   weight,
   icon,
   placeholderText,
+  ...otherProps
 }) => {
   return (
-    <StyledDiv>
+    <div style={{ position: "relative" }}>
       <StyledInput
         {...theme}
+        {...otherProps}
         themeSize={themeSize}
         placeholder={placeholderText}
         weight={weight}
         icon={icon}
       />
-      {icon && <StyledInputIcon {...theme} icon={icon} />}
-    </StyledDiv>
+      {icon && <Icon {...theme} icon={icon} />}
+    </div>
   );
 };

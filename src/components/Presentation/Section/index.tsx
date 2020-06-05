@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 import styled, { DefaultTheme } from "styled-components";
 
-export type SectionPatterns =
+export type SectionLayout =
   | "header"
   | "search"
   | "button"
@@ -10,11 +10,14 @@ export type SectionPatterns =
   | "imageText"
   | "popup"
   | "modal"
-  | "groupNumber";
+  | "groupNumber"
+  | "inputs"
+  | "titlePh"
+  | "labelButton";
 
 interface SectionProps {
   readonly theme?: DefaultTheme;
-  readonly layout?: SectionPatterns;
+  readonly layout?: SectionLayout;
 }
 
 const switchCSSProp: Function = (
@@ -33,12 +36,18 @@ const switchCSSProp: Function = (
       return theme.Section.type.buttons[prop];
     case "imageText":
       return theme.Section.type.imageText[prop];
+    case "titlePh":
+      return theme.Section.type.titlePh[prop];
     case "popup":
       return theme.Section.type.popup[prop];
     case "modal":
       return theme.Section.type.modal[prop];
     case "groupNumber":
       return theme.Section.type.groupNumber[prop];
+    case "inputs":
+      return theme.Section.type.inputs[prop];
+    case "labelButton":
+      return theme.Section.type.labelButton[prop];
     default:
       return theme.Section.type.header[prop];
   }
@@ -47,6 +56,7 @@ const switchCSSProp: Function = (
 const StyledSection = styled.div<SectionProps>`
   display: ${({ theme, layout }) => switchCSSProp(theme, layout, "display")};
   grid: ${({ theme, layout }) => switchCSSProp(theme, layout, "grid")};
+  gap: ${({ theme, layout }) => switchCSSProp(theme, layout, "gap")};
   padding: ${({ theme, layout }) => switchCSSProp(theme, layout, "padding")};
   justify-content: ${({ theme, layout }) =>
     switchCSSProp(theme, layout, "justifyContent")};

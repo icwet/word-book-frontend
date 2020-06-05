@@ -77,6 +77,7 @@ export const Input: InputTheme = {
       fontSize: "14px",
     },
     xl: {
+      width: "100%",
       padding: "18px",
       borderRadius: "4px",
       fontSize: "14px",
