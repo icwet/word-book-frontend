@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { DefaultTheme } from "styled-components";
 import styled from "styled-components";
+import { FieldInputProps } from "formik";
 
 type InputSize = "s" | "m" | "l" | "xl";
 type TextWeight = "300" | "400" | "500" | "600" | "800";
@@ -12,6 +13,7 @@ interface InputProps {
   weight?: TextWeight;
   icon?: InputIcon;
   placeholderText?: string;
+  field?: FieldInputProps<any>;
 }
 
 const StyledInput = styled.input<InputProps>`
@@ -121,6 +123,7 @@ export const Input: FC<Readonly<InputProps>> = ({
   weight,
   icon,
   placeholderText,
+  field,
   ...otherProps
 }) => {
   return (
@@ -128,6 +131,7 @@ export const Input: FC<Readonly<InputProps>> = ({
       <StyledInput
         {...theme}
         {...otherProps}
+        {...field}
         themeSize={themeSize}
         placeholder={placeholderText}
         weight={weight}

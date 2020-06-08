@@ -2,6 +2,7 @@
 import React, { FC, useEffect, useState } from "react";
 // import { fetchTestData } from "./Actions";
 import { Formik, Form, Field, FieldProps } from "formik";
+import * as Yup from "yup";
 // Components
 import { Text } from "components/Presentation/Text";
 import { Icon } from "components/Presentation/Icon";
@@ -24,9 +25,19 @@ export const Login: FC = () => {
     }
   }*/
   interface MyFormValues {
-    firstName: string;
+    email: string;
+    username: string;
+    password: string;
   }
-  const initialValues: MyFormValues = { firstName: "" };
+  const initialValues: MyFormValues = { email: "", username: "", password: "" };
+  const loginSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    username: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    password: Yup.string().min(2, "Too Short!").required("Required"),
+  });
 
   return (
     <Layout layout="main">
@@ -61,12 +72,10 @@ export const Login: FC = () => {
       </Popup>
       <Modal>
         <Formik
-          initialValues={{ name: "Jared" }}
+          initialValues={initialValues}
+          validationSchema={loginSchema}
           onSubmit={(values, actions) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              actions.setSubmitting(false);
-            }, 1000);
+            console.log(values);
           }}
         >
           {(formik) => (
@@ -78,13 +87,36 @@ export const Login: FC = () => {
                 </Text>
               </Section>
               <Section layout="inputs">
-                <Field>
+                <Field name="email">
                   {(props: FieldProps) => (
-                    <Input themeSize="xl" placeholderText="Email" />
+                    <Input
+                      {...props.field}
+                      themeSize="xl"
+                      placeholderText="Email"
+                    />
                   )}
                 </Field>
-                <Input themeSize="xl" placeholderText="Name" />
-                <Input themeSize="xl" placeholderText="Password" />
+                {formik.errors.email && formik.touched.email && (
+                  <div>{formik.errors.email}</div>
+                )}
+                <Field name="name">
+                  {(props: FieldProps) => (
+                    <Input
+                      {...props.field}
+                      themeSize="xl"
+                      placeholderText="Name"
+                    />
+                  )}
+                </Field>
+                <Field name="password">
+                  {(props: FieldProps) => (
+                    <Input
+                      {...props.field}
+                      themeSize="xl"
+                      placeholderText="Password"
+                    />
+                  )}
+                </Field>
               </Section>
               <Section layout="labelButton">
                 <Text size="s">
