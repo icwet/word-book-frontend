@@ -1,5 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import React, { FC } from "react";
+import close from "./Icon/close.svg";
 
 type ModalTypes = "default";
 
@@ -14,34 +15,30 @@ const StyledModal = styled.div<ModalProps>`
   bottom: 0;
   padding: 16px;
   z-index: 100;
-  :before {
-    content: "";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background: rgba(10, 10, 10, 0.4);
-    backdrop-filter: blur(4px);
-  }
-  :after {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    border-radius: 14px 14px 0 0;
-    z-index: -1;
-  }
+`;
+const Background = styled.div<ModalProps>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(4px);
+`;
+const Mount = styled.div<ModalProps>`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 14px 14px 0 0;
+  z-index: -1;
 `;
 const Close = styled.button`
   position: fixed;
@@ -50,13 +47,15 @@ const Close = styled.button`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #000;
+  background: url("${close}") center/cover no-repeat;
 `;
 
 export const Modal: FC<ModalProps> = ({ theme, type, children }) => {
   return (
     <StyledModal>
       <Close />
+      <Background />
+      <Mount />
       {children}
     </StyledModal>
   );
