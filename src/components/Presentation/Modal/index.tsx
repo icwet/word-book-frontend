@@ -34,11 +34,15 @@ const Mount = styled.div<ModalProps>`
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: #fff;
   border-radius: 14px 14px 0 0;
-  z-index: -1;
+  z-index: 1;
+`;
+const Content = styled.div<ModalProps>`
+  position: relative;
+  z-index: 10;
 `;
 const Close = styled.button`
   position: fixed;
@@ -47,6 +51,7 @@ const Close = styled.button`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: none;
   background: url("${close}") center/cover no-repeat;
 `;
 
@@ -54,9 +59,9 @@ export const Modal: FC<ModalProps> = ({ theme, type, children }) => {
   return (
     <StyledModal>
       <Close />
-      <Background />
       <Mount />
-      {children}
+      <Background />
+      <Content>{children}</Content>
     </StyledModal>
   );
 };

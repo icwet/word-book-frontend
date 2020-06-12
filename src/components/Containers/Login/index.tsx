@@ -1,7 +1,7 @@
 // Vendor
 import React, { FC, useEffect, useState } from "react";
 // import { fetchTestData } from "./Actions";
-import { Formik, Form, Field, FieldProps, ErrorMessage } from "formik";
+import { Formik, Form, Field, FieldProps } from "formik";
 import * as Yup from "yup";
 // Components
 import { Text } from "components/Presentation/Text";
@@ -24,16 +24,6 @@ export const Login: FC = () => {
       console.log(e);
     }
   }*/
-
-  function validateEmail(value: string) {
-    let error;
-    if (!value) {
-      error = "Required";
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-      error = "Invalid email address";
-    }
-    return error;
-  }
 
   interface MyFormValues {
     email: string;
@@ -99,43 +89,50 @@ export const Login: FC = () => {
                 </Text>
               </Section>
               <Section layout="inputs">
-                <Field name="email" validate={validateEmail}>
-                  {(props: FieldProps) => (
-                    <Input
-                      {...props.field}
-                      themeSize="xl"
-                      placeholderText="Email"
-                    />
-                  )}
+                <Field name="email">
+                  {(props: FieldProps) => {
+                    return (
+                      <Input
+                        {...props.field}
+                        touched={props.meta.touched}
+                        error={props.meta.error}
+                        themeSize="xl"
+                        placeholderText="Email"
+                      />
+                    );
+                  }}
                 </Field>
-                <ErrorMessage name="email" />
-                <Field name="name">
+                <Field name="username">
                   {(props: FieldProps) => (
                     <Input
                       {...props.field}
+                      touched={props.meta.touched}
+                      error={props.meta.error}
                       themeSize="xl"
                       placeholderText="Name"
                     />
                   )}
                 </Field>
-                <ErrorMessage name="name" />
                 <Field name="password">
                   {(props: FieldProps) => (
                     <Input
                       {...props.field}
+                      touched={props.meta.touched}
+                      error={props.meta.error}
                       themeSize="xl"
                       placeholderText="Password"
                     />
                   )}
                 </Field>
-                <ErrorMessage name="password" />
               </Section>
               <Section layout="labelButton">
                 <Text size="s">
                   Продолжая, вы подтверждаите, что ознакомились с Политикой
                   конфиденциальности и согласны с Условиям работы на платформе
                 </Text>
-                <Button size="l">Next</Button>
+                <Button type="submit" size="l">
+                  Next
+                </Button>
               </Section>
             </Form>
           )}

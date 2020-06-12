@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { DefaultTheme } from "styled-components";
 import styled from "styled-components";
+import { DefaultTheme } from "styled-components";
 import { FieldInputProps } from "formik";
 
 type InputSize = "s" | "m" | "l" | "xl";
@@ -14,6 +14,8 @@ interface InputProps {
   icon?: InputIcon;
   placeholderText?: string;
   field?: FieldInputProps<any>;
+  touched?: boolean;
+  error?: string;
 }
 
 const StyledInput = styled.input<InputProps>`
@@ -80,7 +82,13 @@ const StyledInput = styled.input<InputProps>`
         return theme.Input.sizes.s.borderRadius;
     }
   }};
-  border: none;
+  border: ${({ error, touched }) => {
+    if (error && touched) {
+      return "1px solid red";
+    } else {
+      return "none";
+    }
+  }};
   outline: none;
 `;
 
@@ -124,6 +132,8 @@ export const Input: FC<Readonly<InputProps>> = ({
   icon,
   placeholderText,
   field,
+  touched,
+  error,
   ...otherProps
 }) => {
   return (
@@ -132,12 +142,15 @@ export const Input: FC<Readonly<InputProps>> = ({
         {...theme}
         {...otherProps}
         {...field}
+        error={error}
+        touched={touched}
         themeSize={themeSize}
         placeholder={placeholderText}
         weight={weight}
         icon={icon}
       />
       {icon && <Icon {...theme} icon={icon} />}
+      {touched && error && <div className="error">{error}</div>}
     </div>
   );
 };
