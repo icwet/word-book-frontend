@@ -67,7 +67,27 @@ const StyledInput = styled.input<InputProps>`
       return "36px";
     }
   }};
-  background: ${({ theme }) => theme.Input.background || "initial"};
+  font-size: ${({ theme, themeSize }) => {
+    switch (themeSize) {
+      case "s":
+        return theme.Input.sizes.s.fontSize;
+      case "m":
+        return theme.Input.sizes.m.fontSize;
+      case "l":
+        return theme.Input.sizes.l.fontSize;
+      case "xl":
+        return theme.Input.sizes.xl.fontSize;
+      default:
+        return theme.Input.sizes.s.fontSize;
+    }
+  }};
+  background: ${({ theme, error, touched }) => {
+    if (error && touched) {
+      return "#f8d7da";
+    } else {
+      return theme.Input.background;
+    }
+  }};
   border-radius: ${({ theme, themeSize }) => {
     switch (themeSize) {
       case "s":
@@ -84,9 +104,9 @@ const StyledInput = styled.input<InputProps>`
   }};
   border: ${({ error, touched }) => {
     if (error && touched) {
-      return "1px solid red";
+      return "1px solid #721c24";
     } else {
-      return "none";
+      return "1px solid transparent";
     }
   }};
   outline: none;
@@ -125,6 +145,15 @@ const Icon = styled.div<InputProps>`
   }};
 `;
 
+const ErrorField = styled.div<InputProps>`
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 14px;
+  font-family: "Roboto-Regular", sans-serif;
+  color: #721c24;
+`;
+
 export const Input: FC<Readonly<InputProps>> = ({
   theme,
   themeSize,
@@ -150,7 +179,7 @@ export const Input: FC<Readonly<InputProps>> = ({
         icon={icon}
       />
       {icon && <Icon {...theme} icon={icon} />}
-      {touched && error && <div className="error">{error}</div>}
+      {touched && error && <ErrorField>{error}</ErrorField>}
     </div>
   );
 };

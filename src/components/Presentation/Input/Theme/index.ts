@@ -80,7 +80,7 @@ export const Input: InputTheme = {
       width: "100%",
       padding: "18px",
       borderRadius: "4px",
-      fontSize: "14px",
+      fontSize: "16px",
     },
   },
   icon: {
