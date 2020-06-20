@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "baseBlack": "#000000",
+    "baseWhite": "#FFFFFF",
+    "baseGray": "#AAAAAA",
+    "Input": {
+      "baseGray": "#F3F2F5"
+    },
+    "Button": {
+      "baseBlack": "#000000",
+      "baseWhite": "#FFFFFF",
+      "baseGray": "#F3F2F5",
+      "baseWarning": "#FFC107"
+    },
+    "Popup": {
+      "baseBlack": "#000000",
+      "baseWhite": "#FFFFFF"
+    }
+  }
+}
