@@ -7,6 +7,7 @@ type ModalTypes = "default";
 interface ModalProps {
   theme?: DefaultTheme;
   type?: ModalTypes;
+  onClose?: Function;
 }
 
 const StyledModal = styled.div<ModalProps>`
@@ -55,10 +56,10 @@ const Close = styled.button`
   background: url("${close}") center/cover no-repeat;
 `;
 
-export const Modal: FC<ModalProps> = ({ theme, type, children }) => {
+export const Modal: FC<ModalProps> = ({ theme, type, children, onClose }) => {
   return (
     <StyledModal>
-      <Close />
+      <Close onClick={() => (onClose ? onClose() : null)} />
       <Mount />
       <Background />
       <Content>{children}</Content>

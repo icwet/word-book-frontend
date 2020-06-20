@@ -14,24 +14,27 @@ import { Modal } from "components/Presentation/Modal";
 // State
 import { AppDispatch, RootState } from "store";
 import { connect, ConnectedProps } from "react-redux";
-import { fetchEmailAccess } from "./Actions";
+import { getEmailAccess, sendRegistrationData, toggleModal } from "./Actions";
+import { RegistrationFormValues } from "./Actions/types";
 
 interface LoginProps extends PropsFromRedux {}
 
 const Login: FC<LoginProps> = ({
+  modal,
   email,
   emailAccess,
   emailAccessLoading,
   checkEmail,
+  toggleModal,
+  sendRegistrationData,
 }) => {
-  interface MyFormValues {
-    email: string;
-    username: string;
-    password: string;
-  }
-  const initialValues: MyFormValues = { email: "", username: "", password: "" };
+  const initialValues: RegistrationFormValues = {
+    email: "",
+    name: "",
+    password: "",
+  };
   const loginSchema = Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
@@ -78,94 +81,104 @@ const Login: FC<LoginProps> = ({
           <Button size="m" buttonTheme="alt">
             Sign in
           </Button>
-          <Button size="m" buttonTheme="transparent">
+          <Button
+            size="m"
+            buttonTheme="transparent"
+            onClick={() => toggleModal()}
+          >
             Sign up
           </Button>
         </Section>
       </Popup>
-      <Modal>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={loginSchema}
-          validateOnBlur
-          onSubmit={(values, actions) => {
-            console.log(values);
-          }}
-        >
-          {(formik) => (
-            <Form>
-              <Section layout="titlePh">
-                <Text size="l">Sign up for learn a words</Text>
-                <Text size="l" color="disabled">
-                  Enter your email and think up password.
-                </Text>
-              </Section>
-              <Section layout="inputs">
-                <Field name="email" validate={validateEmail}>
-                  {(props: FieldProps) => {
-                    return (
+      {modal && (
+        <Modal onClose={toggleModal}>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={loginSchema}
+            validateOnBlur
+            onSubmit={(values) => {
+              sendRegistrationData(values);
+            }}
+          >
+            {(formik) => (
+              <Form>
+                <Section layout="titlePh">
+                  <Text size="l">Sign up for learn a words</Text>
+                  <Text size="l" color="disabled">
+                    Enter your email and think up password.
+                  </Text>
+                </Section>
+                <Section layout="inputs">
+                  <Field name="email" validate={validateEmail}>
+                    {(props: FieldProps) => {
+                      return (
+                        <Input
+                          {...props.field}
+                          touched={props.meta.touched}
+                          error={props.meta.error}
+                          themeSize="xl"
+                          placeholderText="Email"
+                        />
+                      );
+                    }}
+                  </Field>
+                  <Field name="name">
+                    {(props: FieldProps) => (
                       <Input
                         {...props.field}
                         touched={props.meta.touched}
                         error={props.meta.error}
                         themeSize="xl"
-                        placeholderText="Email"
+                        placeholderText="Name"
                       />
-                    );
-                  }}
-                </Field>
-                <Field name="username">
-                  {(props: FieldProps) => (
-                    <Input
-                      {...props.field}
-                      touched={props.meta.touched}
-                      error={props.meta.error}
-                      themeSize="xl"
-                      placeholderText="Name"
-                    />
-                  )}
-                </Field>
-                <Field name="password">
-                  {(props: FieldProps) => (
-                    <Input
-                      {...props.field}
-                      touched={props.meta.touched}
-                      error={props.meta.error}
-                      themeSize="xl"
-                      placeholderText="Password"
-                    />
-                  )}
-                </Field>
-              </Section>
-              <Section layout="labelButton">
-                <Text size="s">
-                  Продолжая, вы подтверждаите, что ознакомились с Политикой
-                  конфиденциальности и согласны с Условиям работы на платформе
-                </Text>
-                <Button type="submit" size="l">
-                  Next
-                </Button>
-              </Section>
-            </Form>
-          )}
-        </Formik>
-      </Modal>
+                    )}
+                  </Field>
+                  <Field name="password">
+                    {(props: FieldProps) => (
+                      <Input
+                        {...props.field}
+                        touched={props.meta.touched}
+                        error={props.meta.error}
+                        themeSize="xl"
+                        placeholderText="Password"
+                      />
+                    )}
+                  </Field>
+                </Section>
+                <Section layout="labelButton">
+                  <Text size="s">
+                    Продолжая, вы подтверждаите, что ознакомились с Политикой
+                    конфиденциальности и согласны с Условиям работы на платформе
+                  </Text>
+                  <Button type="submit" size="l">
+                    Next
+                  </Button>
+                </Section>
+              </Form>
+            )}
+          </Formik>
+        </Modal>
+      )}
     </Layout>
   );
 };
 
 const mapStateToProps = (state: RootState) => {
-  const { emailAccessLoading, emailAccess, email } = state.Login;
+  const { emailAccessLoading, emailAccess, email, modal } = state.Login;
   return {
     emailAccessLoading,
     emailAccess,
     email,
+    modal,
   };
 };
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    checkEmail: (email: string) => dispatch(fetchEmailAccess(email)),
+    checkEmail: (email: string) => dispatch(getEmailAccess(email)),
+    toggleModal: () => dispatch(toggleModal()),
+    sendRegistrationData: (data: RegistrationFormValues) =>
+      dispatch(sendRegistrationData(data)),
   };
 };
 
