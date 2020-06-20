@@ -1,6 +1,5 @@
 // Vendor
-import React, { FC, useEffect, useState } from "react";
-// import { fetchTestData } from "./Actions";
+import React, { FC } from "react";
 import { Formik, Form, Field, FieldProps } from "formik";
 import * as Yup from "yup";
 // Components
@@ -12,19 +11,19 @@ import { Layout } from "components/Presentation/Layout";
 import { Section } from "components/Presentation/Section";
 import { Popup } from "components/Presentation/Popup";
 import { Modal } from "components/Presentation/Modal";
-// import { useDispatch } from "react-redux";
+// State
+import { AppDispatch, RootState } from "store";
+import { connect, ConnectedProps } from "react-redux";
+import { fetchEmailAccess } from "./Actions";
 
-export const Login: FC = () => {
-  /*const dispatch = useDispatch();
+interface LoginProps extends PropsFromRedux {}
 
-  async function testFetch() {
-    try {
-      await Promise.all([dispatch(fetchTestData())]);
-    } catch (e) {
-      console.log(e);
-    }
-  }*/
-
+const Login: FC<LoginProps> = ({
+  email,
+  emailAccess,
+  emailAccessLoading,
+  checkEmail,
+}) => {
   interface MyFormValues {
     email: string;
     username: string;
@@ -32,13 +31,26 @@ export const Login: FC = () => {
   }
   const initialValues: MyFormValues = { email: "", username: "", password: "" };
   const loginSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Required"),
     username: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
     password: Yup.string().min(2, "Too Short!").required("Required"),
   });
+  const validateEmail = (value: string) => {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = "Invalid email address";
+    } else if (!emailAccessLoading && email !== value) {
+      checkEmail(value);
+      if (emailAccess?.result) {
+        error = "This email is already in use";
+      }
+    }
+    return error;
+  };
 
   return (
     <Layout layout="main">
@@ -89,7 +101,7 @@ export const Login: FC = () => {
                 </Text>
               </Section>
               <Section layout="inputs">
-                <Field name="email">
+                <Field name="email" validate={validateEmail}>
                   {(props: FieldProps) => {
                     return (
                       <Input
@@ -141,3 +153,22 @@ export const Login: FC = () => {
     </Layout>
   );
 };
+
+const mapStateToProps = (state: RootState) => {
+  const { emailAccessLoading, emailAccess, email } = state.Login;
+  return {
+    emailAccessLoading,
+    emailAccess,
+    email,
+  };
+};
+
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+  return {
+    checkEmail: (email: string) => dispatch(fetchEmailAccess(email)),
+  };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+export default connector(Login);

@@ -1,5 +1,5 @@
-import axios, { AxiosResponse, Method } from "axios";
-import { BASE_URL, USERNAME, PASSWORD } from "../config";
+import axios, { Method } from "axios";
+import { BASE_URL, BASE_AUTH } from "../config";
 
 const deviceId = () => {
   const navigator = window.navigator;
@@ -19,23 +19,21 @@ export async function requestApi<T, B>(
   before: Function,
   body: B | null = null,
   headers = {}
-): Promise<AxiosResponse<T>> {
+): Promise<T | any> {
   before();
   const _url = `${BASE_URL}${url}`;
   try {
-    return axios({
+    const request = await axios({
       method: method,
       url: _url,
       data: body,
       headers: {
         ...headers,
-        "User-Device-ID": `${deviceId()}`,
-      },
-      auth: {
-        username: `${USERNAME}`,
-        password: `${PASSWORD}`,
+        Authorization: `Bearer ${BASE_AUTH}`,
+        "Device-ID": `${deviceId()}`,
       },
     });
+    return request.data;
   } catch (e) {
     throw e;
   }

@@ -1,48 +1,55 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "store/index";
+import { EmailAccess } from "./types";
 import { requestApi } from "helpers/api";
-import { AxiosResponse } from "axios";
-import { PingResult } from "./types";
 
-interface AppState {
-  testResp: AxiosResponse<PingResult> | null;
+interface LoginInitialState {
+  emailAccess: EmailAccess | null;
+  emailAccessLoading: boolean;
+  email: null | string;
+  error: null | string;
 }
 
-const initialState: AppState = {
-  testResp: null,
+const initialState: LoginInitialState = {
+  emailAccess: null,
+  emailAccessLoading: false,
+  email: null,
+  error: null,
 };
 
-const appTest = createSlice({
-  name: "appTest",
+const Login = createSlice({
+  name: "Login",
   initialState,
   reducers: {
-    getRepoDetailsSuccess(
-      state,
-      action: PayloadAction<AxiosResponse<PingResult>>
-    ) {
-      state.testResp = action.payload;
+    getEmailAccessStart(state, action) {
+      state.emailAccessLoading = true;
+      state.email = action.payload;
     },
-    getRepoDetailsFailed(
-      state,
-      action: PayloadAction<AxiosResponse<PingResult>>
-    ) {
-      state.testResp = action.payload;
+    getEmailAccessSuccess(state, action: PayloadAction<EmailAccess>) {
+      state.emailAccessLoading = false;
+      state.emailAccess = action.payload;
+    },
+    getEmailAccessFailed(state, action: PayloadAction<string>) {
+      state.emailAccessLoading = false;
+      state.error = action.payload;
     },
   },
 });
 
-export const fetchTestData = (): AppThunk => async (dispatch) => {
-  try {
-    const repoDetails = await requestApi<PingResult, null>(
-      "/ping",
-      "get",
-      () => {}
-    );
-    dispatch(getRepoDetailsSuccess(repoDetails));
-  } catch (err) {
-    dispatch(getRepoDetailsFailed(err));
-  }
+export const fetchEmailAccess = (email: string): AppThunk => (dispatch) => {
+  requestApi<EmailAccess, {}>(`/auth/emails/${email}`, "get", () =>
+    dispatch(getEmailAccessStart(email))
+  ).then(
+    (emailAccess) => {
+      dispatch(getEmailAccessSuccess(emailAccess));
+    },
+    (err) => dispatch(getEmailAccessFailed(err.toString()))
+  );
 };
 
-export const { getRepoDetailsSuccess, getRepoDetailsFailed } = appTest.actions;
-export default appTest.reducer;
+export const {
+  getEmailAccessStart,
+  getEmailAccessSuccess,
+  getEmailAccessFailed,
+} = Login.actions;
+export default Login.reducer;

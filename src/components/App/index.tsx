@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { defaultTheme } from "./Theme";
 // Components
-import { Login } from "components/Containers/Login";
+import Login from "components/Containers/Login";
 import { Font } from "components/Presentation/Font";
 import { Route, Redirect, Switch, RouteProps } from "react-router-dom";
 import { Home } from "components/Containers/Home";
