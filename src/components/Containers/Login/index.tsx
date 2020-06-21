@@ -148,8 +148,14 @@ const Login: FC<LoginProps> = ({
                 </Section>
                 <Section layout="labelButton">
                   <Text size="s">
-                    Продолжая, вы подтверждаите, что ознакомились с Политикой
-                    конфиденциальности и согласны с Условиям работы на платформе
+                    Продолжая, вы подтверждаите, что ознакомились с 
+                    <span style={{ fontWeight: "bold" }}>
+                      Политикой конфиденциальности
+                    </span>
+                    и согласны с 
+                    <span style={{ fontWeight: "bold" }}>
+                      Условиям работы на платформе
+                    </span>
                   </Text>
                   <Button type="submit" size="l">
                     Next
