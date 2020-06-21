@@ -118,6 +118,7 @@ const Login: FC<LoginProps> = ({
                           error={props.meta.error}
                           themeSize="xl"
                           placeholderText="Email"
+                          type="email"
                         />
                       );
                     }}
