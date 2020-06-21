@@ -28,11 +28,11 @@ const Login = createSlice({
     toggleModal(state) {
       state.modal = !state.modal;
     },
+
     getEmailAccessStart(state, action) {
       state.emailAccessLoading = true;
       state.email = action.payload;
     },
-
     getEmailAccessSuccess(state, action: PayloadAction<EmailAccess>) {
       state.emailAccessLoading = false;
       state.emailAccess = action.payload;
