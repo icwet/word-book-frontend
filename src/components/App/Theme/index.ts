@@ -6,6 +6,7 @@ import { Button } from "components/Presentation/Button/Theme";
 import { Layout } from "components/Presentation/Layout/Theme";
 import { Section } from "components/Presentation/Section/Theme";
 import { Popup } from "components/Presentation/Popup/Theme";
+import { Modal } from "components/Presentation/Modal/Theme";
 
 const defaultTheme: DefaultTheme = {
   Text,
@@ -15,6 +16,7 @@ const defaultTheme: DefaultTheme = {
   Layout,
   Section,
   Popup,
+  Modal,
 };
 
 export { defaultTheme };
