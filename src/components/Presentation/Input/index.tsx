@@ -16,6 +16,7 @@ interface InputProps {
   field?: FieldInputProps<any>;
   touched?: boolean;
   error?: string;
+  type?: string;
 }
 
 const StyledInput = styled.input<InputProps>`
@@ -163,20 +164,22 @@ export const Input: FC<Readonly<InputProps>> = ({
   field,
   touched,
   error,
+  type,
   ...otherProps
 }) => {
   return (
     <div style={{ position: "relative" }}>
       <StyledInput
         {...theme}
-        {...otherProps}
         {...field}
+        {...otherProps}
         error={error}
         touched={touched}
         themeSize={themeSize}
         placeholder={placeholderText}
         weight={weight}
         icon={icon}
+        type={type}
       />
       {icon && <Icon {...theme} icon={icon} />}
       {touched && error && <ErrorField>{error}</ErrorField>}

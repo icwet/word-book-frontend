@@ -177,7 +177,7 @@ export const Section: SectionTheme = {
       display: "grid",
       gap: "16px",
       grid: "auto-flow / 1fr",
-      padding: "24px 0 92px 0",
+      padding: "24px 0 24px 0",
     },
     labelButton: {
       display: "grid",
