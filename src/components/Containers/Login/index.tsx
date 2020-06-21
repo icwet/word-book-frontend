@@ -91,7 +91,7 @@ const Login: FC<LoginProps> = ({
         </Section>
       </Popup>
       {modal && (
-        <Modal onClose={toggleModal}>
+        <Modal type="default" onClose={toggleModal}>
           <Formik
             initialValues={initialValues}
             validationSchema={loginSchema}

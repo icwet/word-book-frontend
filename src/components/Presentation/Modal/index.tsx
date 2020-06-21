@@ -11,11 +11,46 @@ interface ModalProps {
 }
 
 const StyledModal = styled.div<ModalProps>`
-  display: grid;
-  position: absolute;
-  bottom: 0;
-  padding: 16px;
-  z-index: 100;
+  display: ${({ theme, type }) => {
+    switch (type) {
+      case "default":
+        return theme.Modal.type.default.display;
+      default:
+        return theme.Modal.type.default.display;
+    }
+  }};
+  position: ${({ theme, type }) => {
+    switch (type) {
+      case "default":
+        return theme.Modal.type.default.position;
+      default:
+        return theme.Modal.type.default.position;
+    }
+  }};
+  bottom: ${({ theme, type }) => {
+    switch (type) {
+      case "default":
+        return theme.Modal.type.default.bottom;
+      default:
+        return theme.Modal.type.default.bottom;
+    }
+  }};
+  padding: ${({ theme, type }) => {
+    switch (type) {
+      case "default":
+        return theme.Modal.type.default.padding;
+      default:
+        return theme.Modal.type.default.padding;
+    }
+  }};
+  z-index: ${({ theme, type }) => {
+    switch (type) {
+      case "default":
+        return theme.Modal.type.default["z-index"];
+      default:
+        return theme.Modal.type.default["z-index"];
+    }
+  }};
 `;
 const Background = styled.div<ModalProps>`
   position: fixed;

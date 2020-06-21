@@ -6,6 +6,7 @@ import { InputTheme } from "components/Presentation/Input/Theme";
 import { ButtonTheme } from "components/Presentation/Button/Theme";
 import { LayoutTheme } from "components/Presentation/Layout/Theme";
 import { PopupTheme } from "components/Presentation/Popup/Theme";
+import { ModalTheme } from "components/Presentation/Modal/Theme";
 
 declare module "styled-components" {
   export interface DefaultTheme {
@@ -16,5 +17,6 @@ declare module "styled-components" {
     Layout: LayoutTheme;
     Section: SectionTheme;
     Popup: PopupTheme;
+    Modal: ModalTheme;
   }
 }
