@@ -36,9 +36,14 @@ const Login: FC<LoginProps> = ({
   const loginSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .max(32, "Too Long!")
       .required("Required"),
-    password: Yup.string().min(2, "Too Short!").required("Required"),
+    password: Yup.string()
+      .min(6, "Too Short!")
+      .max(32, "Too Long!")
+      .matches(/\d/, "Must have one character")
+      .matches(/\D/, "Must have one digit")
+      .required("Required"),
   });
   const validateEmail = (value: string) => {
     let error;
@@ -142,6 +147,7 @@ const Login: FC<LoginProps> = ({
                         error={props.meta.error}
                         themeSize="xl"
                         placeholderText="Password"
+                        type="password"
                       />
                     )}
                   </Field>
